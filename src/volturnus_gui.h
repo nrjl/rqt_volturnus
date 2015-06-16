@@ -65,6 +65,7 @@ protected:
     ros::Publisher acc_command_pub_;
 };
 
+
 } // namespace
 
 #endif // rqt_volturnus__VOLTURNUS_GUI_H
