@@ -1,0 +1,12 @@
+<library path="lib/librqt_volturnus">
+  <class name="rqt_volturnus" type="rqt_volturnus::volturnus_gui" base_class_type="rqt_gui_cpp::Plugin">
+    <description>
+      A GUI plugin for operating and controlling the Volturnus AUV.
+    </description>
+    <qtgui>
+      <label>Volturnus Interface</label>
+      <icon type="theme">view-fullscreen</icon>
+      <statustip>A GUI plugin to communicate with the Volturnus AUV.</statustip>
+    </qtgui>
+  </class>
+</library>

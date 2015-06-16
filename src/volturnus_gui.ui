@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VolturnusWidget</class>
+ <widget class="QWidget" name="VolturnusWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>525</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>volturnus_gui</string>
+  </property>
+  <widget class="QGroupBox" name="lightsBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>330</y>
+     <width>251</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}
+
+</string>
+   </property>
+   <property name="title">
+    <string>Lights</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0" colspan="2">
+     <widget class="QPushButton" name="lights_updateButton">
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <layout class="QVBoxLayout" name="left">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Left</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="left_brighterButton">
+        <property name="text">
+         <string>Brighter</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="left_dimmerButton">
+        <property name="text">
+         <string>Dimmer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="left_powerProgress">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="right">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Right</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="right_brighterButton">
+        <property name="text">
+         <string>Brighter</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="right_dimmerButton">
+        <property name="text">
+         <string>Dimmer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="right_powerProgress">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTabWidget" name="requestTab">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>10</y>
+     <width>301</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Sensors</string>
+    </attribute>
+    <widget class="QGroupBox" name="sensorsBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>270</width>
+       <height>434</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Sensors</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="3">
+       <widget class="QPushButton" name="sensors_updateButton">
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Roll</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLCDNumber" name="sensors_rollLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Pitch</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLCDNumber" name="sensors_pitchLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="2">
+       <widget class="QLCDNumber" name="sensors_28VpowerLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="3">
+       <widget class="QLabel" name="label_65">
+        <property name="text">
+         <string>V</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLabel" name="label_66">
+        <property name="text">
+         <string>Water detect</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="2">
+       <widget class="QLabel" name="sensors_waterdetect">
+        <property name="text">
+         <string>False</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_35">
+        <property name="text">
+         <string>Heading (desired)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="2">
+       <widget class="QLCDNumber" name="sensors_dheadingLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="3">
+       <widget class="QLabel" name="label_40">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLCDNumber" name="sensors_ddepthLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="3">
+       <widget class="QLabel" name="label_39">
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Temp (internal)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLCDNumber" name="sensors_tempiLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="label_37">
+        <property name="text">
+         <string>5V Power supply</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>C</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Temp (external)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Heading</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLCDNumber" name="sensors_headingLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_36">
+        <property name="text">
+         <string>Altitude (desired)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="2">
+       <widget class="QLCDNumber" name="sensors_daltitudeLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="3">
+       <widget class="QLabel" name="label_41">
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="2">
+       <widget class="QLCDNumber" name="sensors_5VpowerLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="3">
+       <widget class="QLabel" name="label_64">
+        <property name="text">
+         <string>V</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0" colspan="2">
+       <widget class="QLabel" name="label_38">
+        <property name="text">
+         <string>28V Power supply</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLCDNumber" name="sensors_tempeLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>C</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="2">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Pressure (internal)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLCDNumber" name="sensors_pressureLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QLabel" name="label_18">
+        <property name="text">
+         <string>kPa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Depth (desired)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Depth</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLCDNumber" name="sensors_depthLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Nav parameters</string>
+    </attribute>
+    <widget class="QGroupBox" name="navBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>301</width>
+       <height>324</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Nav Parameters</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_68">
+        <property name="text">
+         <string>Heading P</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLCDNumber" name="nav_headingPLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_70">
+        <property name="text">
+         <string>Heading I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLCDNumber" name="nav_headingILCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_72">
+        <property name="text">
+         <string>Heading D</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLCDNumber" name="nav_headingDLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_74">
+        <property name="text">
+         <string>Depth P</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLCDNumber" name="nav_depthPLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_76">
+        <property name="text">
+         <string>Depth I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLCDNumber" name="nav_depthILCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_78">
+        <property name="text">
+         <string>Depth D</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLCDNumber" name="nav_depthDLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_80">
+        <property name="text">
+         <string>Declination</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLCDNumber" name="nav_declinationLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLabel" name="label_81">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_82">
+        <property name="text">
+         <string>Vehicle Power</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLCDNumber" name="nav_vpowerLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_84">
+        <property name="text">
+         <string>Hotel Power</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLCDNumber" name="nav_hpowerLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="nav_updateButton">
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="tiltBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>111</width>
+     <height>96</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}
+
+</string>
+   </property>
+   <property name="title">
+    <string>Camera tilt</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="tilt_upButton">
+      <property name="text">
+       <string>Up</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="tilt_downButton">
+      <property name="text">
+       <string>Down</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="gainsBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>251</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}
+
+</string>
+   </property>
+   <property name="title">
+    <string>Control parameters</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0" colspan="4">
+     <widget class="QCheckBox" name="autodepth_checkBox">
+      <property name="text">
+       <string>Auto depth</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="4">
+     <widget class="QCheckBox" name="autoheading_checkBox">
+      <property name="text">
+       <string>Auto heading</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QCheckBox" name="trim_checkBox">
+      <property name="text">
+       <string>Trim</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3" rowspan="3">
+     <widget class="QSlider" name="horiz_gainSlider">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>1</number>
+      </property>
+      <property name="sliderPosition">
+       <number>1</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="horiz_gainLabel">
+      <property name="text">
+       <string>Horizontal </string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="vert_gainLabel">
+      <property name="text">
+       <string>Vertical</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QSlider" name="vert_gainSlider">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>1</number>
+      </property>
+      <property name="sliderPosition">
+       <number>1</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksBelow</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="initButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>251</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Send initialise message MT-9</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gripperBox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>230</y>
+     <width>111</width>
+     <height>96</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}
+
+</string>
+   </property>
+   <property name="title">
+    <string>Gripper</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QPushButton" name="gripper_openButton">
+      <property name="text">
+       <string>Open</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="gripper_closeButton">
+      <property name="text">
+       <string>Close</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
