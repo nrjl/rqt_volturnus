@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(rqt_volturnus)
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS roscpp rqt_gui rqt_gui_cpp )
+find_package(catkin REQUIRED COMPONENTS roscpp rqt_gui rqt_gui_cpp std_msgs)
 
 find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui)
 
@@ -28,7 +28,7 @@ set(rqt_volturnus_INCLUDE_DIRECTORIES
 catkin_package(
 	INCLUDE_DIRS ${rqt_volturnus_INCLUDE_DIRECTORIES}
 	LIBRARIES ${PROJECT_NAME} 
-	CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp
+        CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp std_msgs
 )
 catkin_python_setup()
 

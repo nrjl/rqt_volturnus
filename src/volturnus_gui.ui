@@ -124,7 +124,7 @@ QGroupBox::title {
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -143,6 +143,16 @@ QGroupBox::title {
       <string>Sensors</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <item row="6" column="2">
+       <widget class="QLCDNumber" name="sensors_turnsLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0" colspan="3">
        <widget class="QPushButton" name="sensors_updateButton">
         <property name="text">
@@ -150,21 +160,21 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
+      <item row="3" column="3">
        <widget class="QLabel" name="label_6">
         <property name="text">
          <string>deg</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="label_7">
         <property name="text">
          <string>Roll</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="4" column="2">
        <widget class="QLCDNumber" name="sensors_rollLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
@@ -174,21 +184,21 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
+      <item row="4" column="3">
        <widget class="QLabel" name="label_8">
         <property name="text">
          <string>deg</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_9">
         <property name="text">
          <string>Pitch</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="2">
+      <item row="5" column="2">
        <widget class="QLCDNumber" name="sensors_pitchLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
@@ -198,8 +208,8 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="12" column="2">
-       <widget class="QLCDNumber" name="sensors_28VpowerLCD">
+      <item row="14" column="2">
+       <widget class="QLCDNumber" name="sensors_hiV_power_supplyLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -208,36 +218,36 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="12" column="3">
+      <item row="14" column="3">
        <widget class="QLabel" name="label_65">
         <property name="text">
          <string>V</string>
         </property>
        </widget>
       </item>
-      <item row="13" column="0">
+      <item row="15" column="0">
        <widget class="QLabel" name="label_66">
         <property name="text">
          <string>Water detect</string>
         </property>
        </widget>
       </item>
-      <item row="13" column="2">
+      <item row="15" column="2">
        <widget class="QLabel" name="sensors_waterdetect">
         <property name="text">
          <string>False</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="0">
+      <item row="11" column="0">
        <widget class="QLabel" name="label_35">
         <property name="text">
          <string>Heading (desired)</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="2">
-       <widget class="QLCDNumber" name="sensors_dheadingLCD">
+      <item row="11" column="2">
+       <widget class="QLCDNumber" name="sensors_desired_headingLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -246,15 +256,15 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="9" column="3">
+      <item row="11" column="3">
        <widget class="QLabel" name="label_40">
         <property name="text">
          <string>deg</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="2">
-       <widget class="QLCDNumber" name="sensors_ddepthLCD">
+      <item row="10" column="2">
+       <widget class="QLCDNumber" name="sensors_desired_depthLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -263,22 +273,22 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="8" column="3">
+      <item row="10" column="3">
        <widget class="QLabel" name="label_39">
         <property name="text">
          <string>m</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="label_13">
         <property name="text">
          <string>Temp (internal)</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <widget class="QLCDNumber" name="sensors_tempiLCD">
+      <item row="7" column="2">
+       <widget class="QLCDNumber" name="sensors_temp_intLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -287,21 +297,21 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="11" column="0">
+      <item row="13" column="0">
        <widget class="QLabel" name="label_37">
         <property name="text">
          <string>5V Power supply</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="3">
+      <item row="7" column="3">
        <widget class="QLabel" name="label_14">
         <property name="text">
          <string>C</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
+      <item row="8" column="0">
        <widget class="QLabel" name="label_15">
         <property name="text">
          <string>Temp (external)</string>
@@ -315,21 +325,21 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>Heading</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="3">
+      <item row="5" column="3">
        <widget class="QLabel" name="label_10">
         <property name="text">
          <string>deg</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
+      <item row="3" column="2">
        <widget class="QLCDNumber" name="sensors_headingLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
@@ -339,15 +349,15 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="10" column="0">
+      <item row="12" column="0">
        <widget class="QLabel" name="label_36">
         <property name="text">
          <string>Altitude (desired)</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="2">
-       <widget class="QLCDNumber" name="sensors_daltitudeLCD">
+      <item row="12" column="2">
+       <widget class="QLCDNumber" name="sensors_desired_altitudeLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -356,15 +366,15 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="10" column="3">
+      <item row="12" column="3">
        <widget class="QLabel" name="label_41">
         <property name="text">
          <string>m</string>
         </property>
        </widget>
       </item>
-      <item row="11" column="2">
-       <widget class="QLCDNumber" name="sensors_5VpowerLCD">
+      <item row="13" column="2">
+       <widget class="QLCDNumber" name="sensors_lowV_power_supplyLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -373,22 +383,22 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="11" column="3">
+      <item row="13" column="3">
        <widget class="QLabel" name="label_64">
         <property name="text">
          <string>V</string>
         </property>
        </widget>
       </item>
-      <item row="12" column="0" colspan="2">
+      <item row="14" column="0" colspan="2">
        <widget class="QLabel" name="label_38">
         <property name="text">
          <string>28V Power supply</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="2">
-       <widget class="QLCDNumber" name="sensors_tempeLCD">
+      <item row="8" column="2">
+       <widget class="QLCDNumber" name="sensors_temp_extLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -397,22 +407,22 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="6" column="3">
+      <item row="8" column="3">
        <widget class="QLabel" name="label_16">
         <property name="text">
          <string>C</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="0" colspan="2">
+      <item row="9" column="0" colspan="2">
        <widget class="QLabel" name="label_17">
         <property name="text">
          <string>Pressure (internal)</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="2">
-       <widget class="QLCDNumber" name="sensors_pressureLCD">
+      <item row="9" column="2">
+       <widget class="QLCDNumber" name="sensors_press_intLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
     color: rgb(210, 210, 210);    
@@ -421,14 +431,14 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="7" column="3">
+      <item row="9" column="3">
        <widget class="QLabel" name="label_18">
         <property name="text">
          <string>kPa</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="0">
+      <item row="10" column="0">
        <widget class="QLabel" name="label_19">
         <property name="text">
          <string>Depth (desired)</string>
@@ -452,6 +462,37 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>Turns</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_23">
+        <property name="text">
+         <string>Altitude</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLCDNumber" name="sensors_altitudeLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>
@@ -465,88 +506,13 @@ QGroupBox::title {
        <x>10</x>
        <y>10</y>
        <width>301</width>
-       <height>324</height>
+       <height>371</height>
       </rect>
      </property>
      <property name="title">
       <string>Nav Parameters</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_68">
-        <property name="text">
-         <string>Heading P</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLCDNumber" name="nav_headingPLCD">
-        <property name="styleSheet">
-         <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_70">
-        <property name="text">
-         <string>Heading I</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLCDNumber" name="nav_headingILCD">
-        <property name="styleSheet">
-         <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_72">
-        <property name="text">
-         <string>Heading D</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLCDNumber" name="nav_headingDLCD">
-        <property name="styleSheet">
-         <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_74">
-        <property name="text">
-         <string>Depth P</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLCDNumber" name="nav_depthPLCD">
-        <property name="styleSheet">
-         <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_76">
-        <property name="text">
-         <string>Depth I</string>
-        </property>
-       </widget>
-      </item>
       <item row="5" column="1">
        <widget class="QLCDNumber" name="nav_depthILCD">
         <property name="styleSheet">
@@ -574,14 +540,14 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
+      <item row="8" column="0">
        <widget class="QLabel" name="label_80">
         <property name="text">
          <string>Declination</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
+      <item row="8" column="1">
        <widget class="QLCDNumber" name="nav_declinationLCD">
         <property name="styleSheet">
          <string notr="true">QLCDNumber{
@@ -591,44 +557,10 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="7" column="2">
-       <widget class="QLabel" name="label_81">
-        <property name="text">
-         <string>deg</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
+      <item row="9" column="0">
        <widget class="QLabel" name="label_82">
         <property name="text">
          <string>Vehicle Power</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QLCDNumber" name="nav_vpowerLCD">
-        <property name="styleSheet">
-         <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="label_84">
-        <property name="text">
-         <string>Hotel Power</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QLCDNumber" name="nav_hpowerLCD">
-        <property name="styleSheet">
-         <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
         </property>
        </widget>
       </item>
@@ -638,6 +570,145 @@ QGroupBox::title {
          <string>Update</string>
         </property>
        </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_74">
+        <property name="text">
+         <string>Depth P</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_84">
+        <property name="text">
+         <string>Hotel Power</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QLCDNumber" name="nav_hpowerLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_76">
+        <property name="text">
+         <string>Depth I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_83">
+        <property name="text">
+         <string>Units</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLCDNumber" name="nav_depthPLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLCDNumber" name="nav_headingILCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLCDNumber" name="nav_headingPLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_72">
+        <property name="text">
+         <string>Heading D</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLCDNumber" name="nav_headingDLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="label_81">
+        <property name="text">
+         <string>deg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLCDNumber" name="nav_vpowerLCD">
+        <property name="styleSheet">
+         <string notr="true">QLCDNumber{
+    color: rgb(210, 210, 210);    
+    background-color: rgb(34, 56, 123);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_68">
+        <property name="text">
+         <string>Heading P</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1" colspan="2">
+       <widget class="QLabel" name="nav_units">
+        <property name="text">
+         <string>--</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_70">
+        <property name="text">
+         <string>Heading I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
