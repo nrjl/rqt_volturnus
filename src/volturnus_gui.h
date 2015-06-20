@@ -34,10 +34,12 @@ private slots:
     void on_right_brighterButton_released();
     void on_left_dimmerButton_released();
     void on_right_dimmerButton_released();
+    void on_lights_offButton_released();
 
     void on_tilt_upButton_pressed();
     void on_tilt_downButton_pressed();
     void on_tilt_upButton_released();
+    void on_tilt_centreButton_released();
 
     void on_gripper_openButton_pressed();
     void on_gripper_closeButton_pressed();
@@ -59,7 +61,6 @@ private slots:
     void on_sensor_response_received();
     void on_navigation_response_received();
     void on_lights_response_received();
-
 
 signals:
     void sensorResponseReceived();

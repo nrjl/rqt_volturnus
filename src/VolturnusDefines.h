@@ -6,13 +6,13 @@
 
 #define TILT_OFF 0
 #define TILT_CENTER 1
-#define TILT_UP 2
-#define TILT_DOWN 3
+#define TILT_UP 3
+#define TILT_DOWN 2
 #define TILT_INITIALIZE 4
 
 #define GRIPPER_STOP 1
-#define GRIPPER_OPEN 2
-#define GRIPPER_CLOSE 3
+#define GRIPPER_OPEN 3
+#define GRIPPER_CLOSE 2
 
 #define MENU_NO_CMD 0
 #define MENU_CANCEL 1
@@ -40,7 +40,27 @@
 
 #define LIGHT1_NUMBER 1
 #define LIGHT2_NUMBER 5
+#define LIGHT_MIN_POWER 0x80
+#define LIGHT_MAX_POWER 0x8A
 #define GRIPPER_NUMBER 0
 
 #define RESPONSE_TIMEOUT 100     // Milliseconds
 
+
+
+/*
+namespace VOLTURNUS_REQUESTS
+{
+    enum e
+    {   REQUEST_VIDEO=0x23,
+        REQUEST_MOTOR,
+        REQUEST_SENSOR,
+        REQUEST_NAVIGATION,
+        REQUEST_LIGHTS,
+        REQUEST_THRUSTER,
+        REQUEST_ACCESSORY,
+        REQUEST_TILT,
+        REQUEST_BOARD_FIRMWARE,
+        REQUEST_BACKPLANE_FIRMWARE
+    };
+};*/

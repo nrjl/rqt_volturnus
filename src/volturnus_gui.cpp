@@ -43,6 +43,8 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
 
     // Subscribers
     sensor_response_sub_ = getNodeHandle().subscribe<volturnus_comms::SensorResponse>("/volturnus_comms/sensor_response", 10, &volturnus_gui::sensorResponseCallback, this);
+    nav_response_sub_ = getNodeHandle().subscribe<volturnus_comms::NavigationResponse>("/volturnus_comms/navigation_response", 10, &volturnus_gui::navigationResponseCallback, this);
+    lights_response_sub_ = getNodeHandle().subscribe<volturnus_comms::LightsResponse>("/volturnus_comms/lights_response", 10, &volturnus_gui::lightsResponseCallback, this);
 
     // CONNECTIONS
 
@@ -54,6 +56,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.right_brighterButton, SIGNAL(released()), this, SLOT(on_right_brighterButton_released()) );
     connect(ui_.left_dimmerButton, SIGNAL(released()), this, SLOT(on_left_dimmerButton_released()) );
     connect(ui_.right_dimmerButton, SIGNAL(released()), this, SLOT(on_right_dimmerButton_released()) );
+    connect(ui_.lights_offButton, SIGNAL(released()), this, SLOT(on_lights_offButton_released()) );
 
     // tilt
     connect(ui_.tilt_upButton, SIGNAL(pressed()), this, SLOT(on_tilt_upButton_pressed()) );
@@ -83,6 +86,8 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
 
     // response message receivers
     connect(this, SIGNAL(sensorResponseReceived()), this, SLOT( on_sensor_response_received()) );
+    connect(this, SIGNAL(navigationResponseReceived()), this, SLOT( on_navigation_response_received()) );
+    connect(this, SIGNAL(lightsResponseReceived()), this, SLOT( on_lights_response_received()) );
 }
 
 void volturnus_gui::shutdownPlugin()
@@ -162,11 +167,11 @@ void rqt_volturnus::volturnus_gui::on_sensor_response_received()
     ui_.sensors_desired_headingLCD->display(sensor_response_.desired_heading);
     ui_.sensors_desired_depthLCD->display(sensor_response_.desired_depth);
     ui_.sensors_desired_altitudeLCD->display(sensor_response_.desired_altitude);
-    ui_.sensors_lowV_power_supplyLCD->display(sensor_response_.lowV_power_supply);
-    ui_.sensors_hiV_power_supplyLCD->display(sensor_response_.hiV_power_supply);
+    ui_.sensors_lowV_power_supplyLCD->display(float(sensor_response_.lowV_power_supply)/1000.0);
+    ui_.sensors_hiV_power_supplyLCD->display(float(sensor_response_.hiV_power_supply)/1000.0);
 
     if ((sensor_response_.VPS_status & 0x80) > 0)
-        ui_.sensors_waterdetect->setText("True");
+        ui_.sensors_waterdetect->setText("!TRUE!");
     else
         ui_.sensors_waterdetect->setText("False");
 }
@@ -197,33 +202,21 @@ void rqt_volturnus::volturnus_gui::on_navigation_response_received()
             ui_.nav_units->setText("US FRESHWATER");
             break;
         default:
-            ui_.nav_units->setText("NAV UNITS NOT RECOGNISED!");
+            ui_.nav_units->setText("UNITS FAULT");
     }
 }
 
 void rqt_volturnus::volturnus_gui::on_lights_response_received()
 {
-    ui_.sensors_depthLCD->display(sensor_response_.depth);
-    ui_.sensors_headingLCD->display(sensor_response_.heading);
-    ui_.sensors_pitchLCD->display(sensor_response_.pitch);
-    ui_.sensors_rollLCD->display(sensor_response_.roll);
-    ui_.sensors_altitudeLCD->display(sensor_response_.altitude);
-    ui_.sensors_turnsLCD->display(sensor_response_.turns);
-    ui_.sensors_temp_intLCD->display(sensor_response_.temp_int);
-    ui_.sensors_temp_extLCD->display(sensor_response_.temp_ext);
-    ui_.sensors_press_intLCD->display(sensor_response_.press_int);
-    ui_.sensors_desired_headingLCD->display(sensor_response_.desired_heading);
-    ui_.sensors_desired_depthLCD->display(sensor_response_.desired_depth);
-    ui_.sensors_desired_altitudeLCD->display(sensor_response_.desired_altitude);
-    ui_.sensors_lowV_power_supplyLCD->display(sensor_response_.lowV_power_supply);
-    ui_.sensors_hiV_power_supplyLCD->display(sensor_response_.hiV_power_supply);
-
-    if ((sensor_response_.VPS_status & 0x80) > 0)
-        ui_.sensors_waterdetect->setText("True");
-    else
-        ui_.sensors_waterdetect->setText("False");
+    ui_.left_powerProgress->setValue(float(lights_response_.current[LIGHT1_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) );
+    ui_.right_powerProgress->setValue(float(lights_response_.current[LIGHT2_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) );
 }
 
+void rqt_volturnus::volturnus_gui::on_lights_offButton_released()
+{
+    sendAccMessage("lights", "off", LIGHT1_NUMBER);
+    sendAccMessage("lights", "off", LIGHT2_NUMBER);
+}
 
 void rqt_volturnus::volturnus_gui::on_left_brighterButton_released()
 {
@@ -258,6 +251,11 @@ void rqt_volturnus::volturnus_gui::on_tilt_downButton_pressed()
 void rqt_volturnus::volturnus_gui::on_tilt_upButton_released()
 {
     sendAccMessage("tilt", "stop");
+}
+
+void rqt_volturnus::volturnus_gui::on_tilt_centreButton_released()
+{
+    sendAccMessage("tilt", "center");
 }
 
 void rqt_volturnus::volturnus_gui::on_gripper_openButton_pressed()
