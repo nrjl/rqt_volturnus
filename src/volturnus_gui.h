@@ -83,7 +83,7 @@ private:
     void sensorResponseCallback(const volturnus_comms::SensorResponse::ConstPtr& msg);
     void navigationResponseCallback(const volturnus_comms::NavigationResponse::ConstPtr& msg);
     void lightsResponseCallback(const volturnus_comms::LightsResponse::ConstPtr& msg);
-    void dvlResponseCallback(const geometry_messages::Twist::ConstPtr& msg);
+    void dvlResponseCallback(const geometry_msgs::Twist::ConstPtr& msg);
 
 protected:
     void sendAccMessage(const std::string& acc, const std::string& comm, const int& num=0);

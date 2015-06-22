@@ -222,12 +222,12 @@ void rqt_volturnus::volturnus_gui::on_lights_response_received()
 
 void rqt_volturnus::volturnus_gui::on_dvl_response_received()
 {
-    ui_.dvl_xdistLCD.display(dvl_response_.angular.x);
-    ui_.dvl_xdistLCD.display(dvl_response_.angular.y);
-    ui_.dvl_xdistLCD.display(dvl_response_.angular.z);
-    ui_.dvl_xvelLCD.display(dvl_response_.linear.x);
-    ui_.dvl_xvelLCD.display(dvl_response_.linear.y);
-    ui_.dvl_xvelLCD.display(dvl_response_.linear.z);
+    ui_.dvl_xdistLCD->display(dvl_response_.angular.x);
+    ui_.dvl_xdistLCD->display(dvl_response_.angular.y);
+    ui_.dvl_xdistLCD->display(dvl_response_.angular.z);
+    ui_.dvl_xvelLCD->display(dvl_response_.linear.x);
+    ui_.dvl_xvelLCD->display(dvl_response_.linear.y);
+    ui_.dvl_xvelLCD->display(dvl_response_.linear.z);
 }
 
 void rqt_volturnus::volturnus_gui::on_lights_offButton_released()
