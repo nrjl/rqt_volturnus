@@ -45,6 +45,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     sensor_response_sub_ = getNodeHandle().subscribe<volturnus_comms::SensorResponse>("/volturnus_comms/sensor_response", 10, &volturnus_gui::sensorResponseCallback, this);
     nav_response_sub_ = getNodeHandle().subscribe<volturnus_comms::NavigationResponse>("/volturnus_comms/navigation_response", 10, &volturnus_gui::navigationResponseCallback, this);
     lights_response_sub_ = getNodeHandle().subscribe<volturnus_comms::LightsResponse>("/volturnus_comms/lights_response", 10, &volturnus_gui::lightsResponseCallback, this);
+    dvl_response_sub_ = getNodeHandle().subscribe<geometry_msgs::Twist>("/explorer_comms/dvl_velocity", 10, &volturnus_gui::dvlResponseCallback, this);
 
     // CONNECTIONS
 
@@ -63,6 +64,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.tilt_downButton, SIGNAL(pressed()), this, SLOT(on_tilt_downButton_pressed()) );
     connect(ui_.tilt_upButton, SIGNAL(released()), this, SLOT(on_tilt_upButton_released()) );
     connect(ui_.tilt_downButton, SIGNAL(released()), this, SLOT(on_tilt_upButton_released()) );
+    connect(ui_.tilt_centreButton, SIGNAL(released()), this, SLOT(on_tilt_centreButton_released()) );
 
     // gripper
     connect(ui_.gripper_openButton, SIGNAL(pressed()), this, SLOT(on_gripper_openButton_pressed()) );
@@ -88,6 +90,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(this, SIGNAL(sensorResponseReceived()), this, SLOT( on_sensor_response_received()) );
     connect(this, SIGNAL(navigationResponseReceived()), this, SLOT( on_navigation_response_received()) );
     connect(this, SIGNAL(lightsResponseReceived()), this, SLOT( on_lights_response_received()) );
+    connect(this, SIGNAL(dvlResponseReceived()), this, SLOT( on_dvl_response_received()) );
 }
 
 void volturnus_gui::shutdownPlugin()
@@ -96,7 +99,7 @@ void volturnus_gui::shutdownPlugin()
     acc_command_pub_.shutdown();
     request_pub_.shutdown();
 
-    sensor_response_sub_.shutdown();
+    // sensor_response_sub_.shutdown();
 }
 
 void volturnus_gui::saveSettings(qt_gui_cpp::Settings& plugin_settings, qt_gui_cpp::Settings& instance_settings) const
@@ -129,6 +132,11 @@ void volturnus_gui::lightsResponseCallback(const volturnus_comms::LightsResponse
     emit lightsResponseReceived();
 }
 
+void volturnus_gui::dvlResponseCallback(const geometry_msgs::Twist::ConstPtr& msg)
+{
+    dvl_response_ = *msg;
+    emit dvlResponseReceived();
+}
 
 void rqt_volturnus::volturnus_gui::sendAccMessage(const std::string& acc, const std::string& comm, const int& num )
 {
@@ -208,8 +216,18 @@ void rqt_volturnus::volturnus_gui::on_navigation_response_received()
 
 void rqt_volturnus::volturnus_gui::on_lights_response_received()
 {
-    ui_.left_powerProgress->setValue(float(lights_response_.current[LIGHT1_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) );
-    ui_.right_powerProgress->setValue(float(lights_response_.current[LIGHT2_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) );
+    ui_.left_powerProgress->setValue(int( 100*float(lights_response_.current[LIGHT1_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) ));
+    ui_.right_powerProgress->setValue(int( 100*float(lights_response_.current[LIGHT2_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) ));
+}
+
+void rqt_volturnus::volturnus_gui::on_dvl_response_received()
+{
+    ui_.dvl_xdistLCD.display(dvl_response_.angular.x);
+    ui_.dvl_xdistLCD.display(dvl_response_.angular.y);
+    ui_.dvl_xdistLCD.display(dvl_response_.angular.z);
+    ui_.dvl_xvelLCD.display(dvl_response_.linear.x);
+    ui_.dvl_xvelLCD.display(dvl_response_.linear.y);
+    ui_.dvl_xvelLCD.display(dvl_response_.linear.z);
 }
 
 void rqt_volturnus::volturnus_gui::on_lights_offButton_released()

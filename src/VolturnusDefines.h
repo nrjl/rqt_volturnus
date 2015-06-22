@@ -6,8 +6,8 @@
 
 #define TILT_OFF 0
 #define TILT_CENTER 1
-#define TILT_UP 3
-#define TILT_DOWN 2
+#define TILT_UP 2
+#define TILT_DOWN 3
 #define TILT_INITIALIZE 4
 
 #define GRIPPER_STOP 1

@@ -9,6 +9,7 @@
 #include "volturnus_comms/NavigationResponse.h"
 #include "volturnus_comms/SensorResponse.h"
 #include "volturnus_comms/LightsResponse.h"
+#include "geometry_msgs/Twist.h"
 //#include <ros/console.h>
 
 
@@ -61,11 +62,13 @@ private slots:
     void on_sensor_response_received();
     void on_navigation_response_received();
     void on_lights_response_received();
+    void on_dvl_response_received();
 
 signals:
     void sensorResponseReceived();
     void navigationResponseReceived();
     void lightsResponseReceived();
+    void dvlResponseReceived();
 
 private:
     Ui::VolturnusWidget ui_;
@@ -74,16 +77,18 @@ private:
     volturnus_comms::SensorResponse sensor_response_;
     volturnus_comms::NavigationResponse nav_response_;
     volturnus_comms::LightsResponse lights_response_;
+    geometry_msgs::Twist dvl_response_;
     bool auto_depth_, auto_heading_;
     int trim_, vert_gain_, horiz_gain_;
     void sensorResponseCallback(const volturnus_comms::SensorResponse::ConstPtr& msg);
     void navigationResponseCallback(const volturnus_comms::NavigationResponse::ConstPtr& msg);
     void lightsResponseCallback(const volturnus_comms::LightsResponse::ConstPtr& msg);
+    void dvlResponseCallback(const geometry_messages::Twist::ConstPtr& msg);
 
 protected:
     void sendAccMessage(const std::string& acc, const std::string& comm, const int& num=0);
     ros::Publisher acc_command_pub_, request_pub_;
-    ros::Subscriber sensor_response_sub_, nav_response_sub_, lights_response_sub_;
+    ros::Subscriber sensor_response_sub_, nav_response_sub_, lights_response_sub_, dvl_response_sub_;
 };
 
 
