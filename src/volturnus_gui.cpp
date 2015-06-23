@@ -46,6 +46,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     nav_response_sub_ = getNodeHandle().subscribe<volturnus_comms::NavigationResponse>("/volturnus_comms/navigation_response", 10, &volturnus_gui::navigationResponseCallback, this);
     lights_response_sub_ = getNodeHandle().subscribe<volturnus_comms::LightsResponse>("/volturnus_comms/lights_response", 10, &volturnus_gui::lightsResponseCallback, this);
     dvl_response_sub_ = getNodeHandle().subscribe<geometry_msgs::Twist>("/explorer_comms/dvl_velocity", 10, &volturnus_gui::dvlResponseCallback, this);
+    firmware_response_sub_ = getNodeHandle().subscribe<volturnus_comms::FirmwareResponse>("/explorer_comms/firmware_response", 10, &volturnus_gui::firmwareResponseCallback, this);
 
     // CONNECTIONS
 
@@ -72,6 +73,17 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.gripper_openButton, SIGNAL(released()), this, SLOT(on_gripper_openButton_released()) );
     connect(ui_.gripper_closeButton, SIGNAL(released()), this, SLOT(on_gripper_openButton_released()) );
 
+    // video
+    connect(ui_.video_menu_cancelButton, SIGNAL(released()), this, SLOT(on_video_menu_cancelButton_released()) );
+    connect(ui_.video_menu_displayButton, SIGNAL(released()), this, SLOT(on_video_menu_displayButton_released()) );
+    connect(ui_.video_menu_numberComboBox, SIGNAL(currentIndexChanged(int index)), this, SLOT(on_video_menu_numberComboBox_currentIndexChanged(int index)) );
+    connect(ui_.video_menu_cancel_submenuButton, SIGNAL(released()), this, SLOT(on_video_menu_cancel_submenuButton_released()) );
+
+    connect(ui_.video_overlay_topButton, SIGNAL(released()), this, SLOT(on_video_overlay_topButton_released()) );
+    connect(ui_.video_overlay_bottomButton, SIGNAL(released()), this, SLOT(on_video_overlay_bottomButton_released()) );
+    connect(ui_.video_overlay_offButton, SIGNAL(released()), this, SLOT(on_video_overlay_offButton_released()) );
+
+
     // gain sliders
     connect(ui_.vert_gainSlider, SIGNAL(valueChanged(int)), this, SLOT(on_vert_gainSlider_valueChanged(int)) );
     connect(ui_.horiz_gainSlider, SIGNAL(valueChanged(int)), this, SLOT(on_horiz_gainSlider_valueChanged(int)) );
@@ -80,6 +92,8 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.sensors_updateButton, SIGNAL(released()), this, SLOT( on_sensors_updateButton_released() ) );
     connect(ui_.lights_updateButton, SIGNAL(released()), this, SLOT( on_lights_updateButton_released() ) );
     connect(ui_.nav_updateButton, SIGNAL(released()), this, SLOT( on_nav_updateButton_released() ) );
+    connect(ui_.firmware_main_updateButton, SIGNAL(released()), this, SLOT( on_firmware_main_updateButton_released()) );
+    connect(ui_.firmware_backplane_updateButton, SIGNAL(released()), this, SLOT( on_firmware_backplane_updateButton_released()) );
 
     // auto depth, heading, trim checkboxes
     connect(ui_.autodepth_checkBox, SIGNAL( toggled(bool) ), this, SLOT( on_autodepth_checkBox_toggled(bool)) );
@@ -91,6 +105,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(this, SIGNAL(navigationResponseReceived()), this, SLOT( on_navigation_response_received()) );
     connect(this, SIGNAL(lightsResponseReceived()), this, SLOT( on_lights_response_received()) );
     connect(this, SIGNAL(dvlResponseReceived()), this, SLOT( on_dvl_response_received()) );
+    connect(this, SIGNAL(firmwareResponseReceived()), this, SLOT( on_firmware_response_received()) );
 }
 
 void volturnus_gui::shutdownPlugin()
@@ -137,6 +152,13 @@ void volturnus_gui::dvlResponseCallback(const geometry_msgs::Twist::ConstPtr& ms
     dvl_response_ = *msg;
     emit dvlResponseReceived();
 }
+
+void volturnus_gui::firmwareResponseCallback(const volturnus_comms::FirmwareResponse::ConstPtr& msg)
+{
+    firmware_response_ = *msg;
+    emit firmwareResponseReceived();
+}
+
 
 void rqt_volturnus::volturnus_gui::sendAccMessage(const std::string& acc, const std::string& comm, const int& num )
 {
@@ -230,30 +252,52 @@ void rqt_volturnus::volturnus_gui::on_dvl_response_received()
     ui_.dvl_xvelLCD->display(dvl_response_.linear.z);
 }
 
+void rqt_volturnus::volturnus_gui::on_firmware_response_received()
+{
+    if (firmware_response_.MT == REQUEST_BOARD_FIRMWARE)
+    {
+        ui_.firmware_firmwareLabel->setText(QString::number(firmware_response_.firmware_revisions[0]));
+        ui_.firmware_bootloaderLabel->setText(QString::number(firmware_response_.firmware_revisions[1]));
+        ui_.firmware_eiop_firmwareLabel->setText(QString::number(firmware_response_.firmware_revisions[2]));
+        ui_.firmware_eiop_bootloaderLabel->setText(QString::number(firmware_response_.firmware_revisions[3]));
+    }
+    else if (firmware_response_.MT == REQUEST_BACKPLANE_FIRMWARE)
+    {
+        ui_.firmware_compassLabel->setText(QString::number(firmware_response_.firmware_revisions[0]));
+        ui_.firmware_ioLabel->setText(QString::number(firmware_response_.firmware_revisions[1]));
+        ui_.firmware_tiltLabel->setText(QString::number(firmware_response_.firmware_revisions[2]));
+    }
+}
+
 void rqt_volturnus::volturnus_gui::on_lights_offButton_released()
 {
     sendAccMessage("lights", "off", LIGHT1_NUMBER);
     sendAccMessage("lights", "off", LIGHT2_NUMBER);
+    on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_left_brighterButton_released()
 {
     sendAccMessage("lights", "brighter", LIGHT1_NUMBER);
+    on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_right_brighterButton_released()
 {
     sendAccMessage("lights", "brighter", LIGHT2_NUMBER);
+    on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_left_dimmerButton_released()
 {
     sendAccMessage("lights", "dimmer", LIGHT1_NUMBER);
+    on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_right_dimmerButton_released()
 {
     sendAccMessage("lights", "dimmer", LIGHT2_NUMBER);
+    on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_tilt_upButton_pressed()
@@ -324,6 +368,20 @@ void rqt_volturnus::volturnus_gui::on_nav_updateButton_released()
     request_pub_.publish(msg);
 }
 
+void rqt_volturnus::volturnus_gui::on_firmware_main_updateButton_released()
+{
+    std_msgs::UInt8 msg;
+    msg.data = REQUEST_BOARD_FIRMWARE;
+    request_pub_.publish(msg);
+}
+
+void rqt_volturnus::volturnus_gui::on_firmware_backplane_updateButton_released()
+{
+    std_msgs::UInt8 msg;
+    msg.data = REQUEST_BACKPLANE_FIRMWARE;
+    request_pub_.publish(msg);
+}
+
 void rqt_volturnus::volturnus_gui::on_autodepth_checkBox_toggled(bool checked)
 {
     if (checked)
@@ -348,8 +406,43 @@ void rqt_volturnus::volturnus_gui::on_trim_checkBox_toggled(bool checked)
         sendAccMessage("status", "trim", 0);
 }
 
+void rqt_volturnus::volturnus_gui::on_video_menu_cancelButton_released()
+{
+    sendAccMessage("menu", "cancel");
+}
+
+void rqt_volturnus::volturnus_gui::on_video_menu_displayButton_released()
+{
+    sendAccMessage("menu", "display");
+}
+
+void rqt_volturnus::volturnus_gui::on_video_menu_numberComboBox_currentIndexChanged(int index)
+{
+    sendAccMessage("menu", "select", index);
+}
+
+void rqt_volturnus::volturnus_gui::on_video_menu_cancel_submenuButton_released()
+{
+    sendAccMessage("menu", "cancel_submenu");
+}
+
+void rqt_volturnus::volturnus_gui::on_video_overlay_topButton_released()
+{
+    sendAccMessage("overlay", "top");
+}
+
+void rqt_volturnus::volturnus_gui::on_video_overlay_bottomButton_released()
+{
+    sendAccMessage("overlay", "bottom");
+}
+
+void rqt_volturnus::volturnus_gui::on_video_overlay_offButton_released()
+{
+    sendAccMessage("overlay", "off");
+}
 
 } //namespace
 
 PLUGINLIB_EXPORT_CLASS(rqt_volturnus::volturnus_gui, rqt_gui_cpp::Plugin)
+
 

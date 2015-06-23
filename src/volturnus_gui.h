@@ -9,6 +9,7 @@
 #include "volturnus_comms/NavigationResponse.h"
 #include "volturnus_comms/SensorResponse.h"
 #include "volturnus_comms/LightsResponse.h"
+#include "volturnus_comms/FirmwareResponse.h"
 #include "geometry_msgs/Twist.h"
 //#include <ros/console.h>
 
@@ -50,9 +51,7 @@ private slots:
     void on_horiz_gainSlider_valueChanged(int value);
 
     void on_lights_updateButton_released();
-
     void on_sensors_updateButton_released();
-
     void on_nav_updateButton_released();
 
     void on_autodepth_checkBox_toggled(bool checked);
@@ -63,12 +62,26 @@ private slots:
     void on_navigation_response_received();
     void on_lights_response_received();
     void on_dvl_response_received();
+    void on_firmware_response_received();
+
+    void on_video_menu_cancelButton_released();
+    void on_video_menu_displayButton_released();
+    void on_video_menu_numberComboBox_currentIndexChanged(int index);
+    void on_video_menu_cancel_submenuButton_released();
+
+    void on_video_overlay_topButton_released();
+    void on_video_overlay_bottomButton_released();
+    void on_video_overlay_offButton_released();
+
+    void on_firmware_main_updateButton_released();
+    void on_firmware_backplane_updateButton_released();
 
 signals:
     void sensorResponseReceived();
     void navigationResponseReceived();
     void lightsResponseReceived();
     void dvlResponseReceived();
+    void firmwareResponseReceived();
 
 private:
     Ui::VolturnusWidget ui_;
@@ -77,18 +90,21 @@ private:
     volturnus_comms::SensorResponse sensor_response_;
     volturnus_comms::NavigationResponse nav_response_;
     volturnus_comms::LightsResponse lights_response_;
+    volturnus_comms::FirmwareResponse firmware_response_;
     geometry_msgs::Twist dvl_response_;
     bool auto_depth_, auto_heading_;
     int trim_, vert_gain_, horiz_gain_;
     void sensorResponseCallback(const volturnus_comms::SensorResponse::ConstPtr& msg);
     void navigationResponseCallback(const volturnus_comms::NavigationResponse::ConstPtr& msg);
     void lightsResponseCallback(const volturnus_comms::LightsResponse::ConstPtr& msg);
+    void firmwareResponseCallback(const volturnus_comms::FirmwareResponse::ConstPtr& msg);
     void dvlResponseCallback(const geometry_msgs::Twist::ConstPtr& msg);
+
 
 protected:
     void sendAccMessage(const std::string& acc, const std::string& comm, const int& num=0);
     ros::Publisher acc_command_pub_, request_pub_;
-    ros::Subscriber sensor_response_sub_, nav_response_sub_, lights_response_sub_, dvl_response_sub_;
+    ros::Subscriber sensor_response_sub_, nav_response_sub_, lights_response_sub_, dvl_response_sub_, firmware_response_sub_;
 };
 
 
