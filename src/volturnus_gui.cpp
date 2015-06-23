@@ -76,7 +76,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     // video
     connect(ui_.video_menu_cancelButton, SIGNAL(released()), this, SLOT(on_video_menu_cancelButton_released()) );
     connect(ui_.video_menu_displayButton, SIGNAL(released()), this, SLOT(on_video_menu_displayButton_released()) );
-    connect(ui_.video_menu_numberComboBox, SIGNAL(currentIndexChanged(int index)), this, SLOT(on_video_menu_numberComboBox_currentIndexChanged(int index)) );
+    connect(ui_.video_menu_numberComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(on_video_menu_numberComboBox_currentIndexChanged(int)) );
     connect(ui_.video_menu_cancel_submenuButton, SIGNAL(released()), this, SLOT(on_video_menu_cancel_submenuButton_released()) );
 
     connect(ui_.video_overlay_topButton, SIGNAL(released()), this, SLOT(on_video_overlay_topButton_released()) );
@@ -256,16 +256,16 @@ void rqt_volturnus::volturnus_gui::on_firmware_response_received()
 {
     if (firmware_response_.MT == REQUEST_BOARD_FIRMWARE)
     {
-        ui_.firmware_firmwareLabel->setText(QString::number(firmware_response_.firmware_revisions[0]));
-        ui_.firmware_bootloaderLabel->setText(QString::number(firmware_response_.firmware_revisions[1]));
-        ui_.firmware_eiop_firmwareLabel->setText(QString::number(firmware_response_.firmware_revisions[2]));
-        ui_.firmware_eiop_bootloaderLabel->setText(QString::number(firmware_response_.firmware_revisions[3]));
+        ui_.firmware_firmwareLabel->setText("YAY!"); //QString::number(int(firmware_response_.firmware_revisions[0])));
+        ui_.firmware_bootloaderLabel->setText(QString::number(int(firmware_response_.firmware_revisions[1])));
+        ui_.firmware_eiop_firmwareLabel->setText(QString::number(int(firmware_response_.firmware_revisions[2])));
+        ui_.firmware_eiop_bootloaderLabel->setText(QString::number(int(firmware_response_.firmware_revisions[3])));
     }
     else if (firmware_response_.MT == REQUEST_BACKPLANE_FIRMWARE)
     {
-        ui_.firmware_compassLabel->setText(QString::number(firmware_response_.firmware_revisions[0]));
-        ui_.firmware_ioLabel->setText(QString::number(firmware_response_.firmware_revisions[1]));
-        ui_.firmware_tiltLabel->setText(QString::number(firmware_response_.firmware_revisions[2]));
+        ui_.firmware_compassLabel->setText(QString::number(int(firmware_response_.firmware_revisions[0])));
+        ui_.firmware_ioLabel->setText(QString::number(int(firmware_response_.firmware_revisions[1])));
+        ui_.firmware_tiltLabel->setText(QString::number(int(firmware_response_.firmware_revisions[2])));
     }
 }
 
