@@ -46,7 +46,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     nav_response_sub_ = getNodeHandle().subscribe<volturnus_comms::NavigationResponse>("/volturnus_comms/navigation_response", 10, &volturnus_gui::navigationResponseCallback, this);
     lights_response_sub_ = getNodeHandle().subscribe<volturnus_comms::LightsResponse>("/volturnus_comms/lights_response", 10, &volturnus_gui::lightsResponseCallback, this);
     dvl_response_sub_ = getNodeHandle().subscribe<geometry_msgs::Twist>("/explorer_comms/dvl_velocity", 10, &volturnus_gui::dvlResponseCallback, this);
-    firmware_response_sub_ = getNodeHandle().subscribe<volturnus_comms::FirmwareResponse>("/explorer_comms/firmware_response", 10, &volturnus_gui::firmwareResponseCallback, this);
+    firmware_response_sub_ = getNodeHandle().subscribe<volturnus_comms::FirmwareResponse>("/volturnus_comms/firmware_response", 10, &volturnus_gui::firmwareResponseCallback, this);
 
     // CONNECTIONS
 
@@ -256,7 +256,7 @@ void rqt_volturnus::volturnus_gui::on_firmware_response_received()
 {
     if (firmware_response_.MT == REQUEST_BOARD_FIRMWARE)
     {
-        ui_.firmware_firmwareLabel->setText("YAY!"); //QString::number(int(firmware_response_.firmware_revisions[0])));
+        ui_.firmware_firmwareLabel->setText(QString::number(int(firmware_response_.firmware_revisions[0])));
         ui_.firmware_bootloaderLabel->setText(QString::number(int(firmware_response_.firmware_revisions[1])));
         ui_.firmware_eiop_firmwareLabel->setText(QString::number(int(firmware_response_.firmware_revisions[2])));
         ui_.firmware_eiop_bootloaderLabel->setText(QString::number(int(firmware_response_.firmware_revisions[3])));
