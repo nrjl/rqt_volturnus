@@ -216,8 +216,8 @@ void rqt_volturnus::volturnus_gui::on_navigation_response_received()
 
 void rqt_volturnus::volturnus_gui::on_lights_response_received()
 {
-    ui_.left_powerProgress->setValue(int( 100*float(lights_response_.current[LIGHT1_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) ));
-    ui_.right_powerProgress->setValue(int( 100*float(lights_response_.current[LIGHT2_NUMBER]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) ));
+    ui_.left_powerProgress->setValue(int( 100*float(lights_response_.current[LIGHT1_NUMBER-1]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) ));
+    ui_.right_powerProgress->setValue(int( 100*float(lights_response_.current[LIGHT2_NUMBER-1]-LIGHT_MIN_POWER)/float(LIGHT_MAX_POWER-LIGHT_MIN_POWER) ));
 }
 
 void rqt_volturnus::volturnus_gui::on_dvl_response_received()
