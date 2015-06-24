@@ -2,9 +2,17 @@
 #include "ui_volturnus_gui.h"
 #include "VolturnusDefines.h"
 #include "std_msgs/UInt8.h"
-//#include <QThread>
+#include <QThread>
 
 #include <pluginlib/class_list_macros.h>
+
+class Sleeper : public QThread
+{
+public:
+    static void usleep(unsigned long usecs){QThread::usleep(usecs);}
+    static void msleep(unsigned long msecs){QThread::msleep(msecs);}
+    static void sleep(unsigned long secs){QThread::sleep(secs);}
+};
 
 namespace rqt_volturnus {
 
@@ -436,55 +444,55 @@ void rqt_volturnus::volturnus_gui::on_video_menu_cancel_submenuButton_released()
 
 void rqt_volturnus::volturnus_gui::on_video_menu_volturnusButton_released()
 {
-    sendAccMessage("menu", "cancel");
-    sendAccMessage("menu", "display");
-    sendAccMessage("menu", "select", 0);
-    sendAccMessage("menu", "select", 1);
-    sendAccMessage("menu", "select", 3);
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 5);
-    sendAccMessage("menu", "select", 5);
-    sendAccMessage("menu", "select", 5);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "select", 6);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "select", 7);
-    sendAccMessage("menu", "cancel_submenu");
-    sendAccMessage("menu", "select", 8);
-    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "cancel"); Sleeper::msleep(20);
+    sendAccMessage("menu", "display"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 0); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 1); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 3); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 5); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 5); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 5); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(20);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(20);
     sendAccMessage("menu", "cancel");
 
     //QThread::msleep(msecs);
