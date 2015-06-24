@@ -2,6 +2,7 @@
 #include "ui_volturnus_gui.h"
 #include "VolturnusDefines.h"
 #include "std_msgs/UInt8.h"
+//#include <QThread>
 
 #include <pluginlib/class_list_macros.h>
 
@@ -79,6 +80,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.video_menu_displayButton, SIGNAL(released()), this, SLOT(on_video_menu_displayButton_released()) );
     connect(ui_.video_menu_numberComboBox, SIGNAL(activated(int)), this, SLOT(on_video_menu_numberComboBox_activated(int)) );
     connect(ui_.video_menu_cancel_submenuButton, SIGNAL(released()), this, SLOT(on_video_menu_cancel_submenuButton_released()) );
+    connect(ui_.video_menu_volturnusButton, SIGNAL(released()), this, SLOT(on_video_menu_volturnusButton_released()) );
 
     connect(ui_.video_overlay_topButton, SIGNAL(released()), this, SLOT(on_video_overlay_topButton_released()) );
     connect(ui_.video_overlay_bottomButton, SIGNAL(released()), this, SLOT(on_video_overlay_bottomButton_released()) );
@@ -432,6 +434,62 @@ void rqt_volturnus::volturnus_gui::on_video_menu_cancel_submenuButton_released()
     sendAccMessage("menu", "cancel_submenu");
 }
 
+void rqt_volturnus::volturnus_gui::on_video_menu_volturnusButton_released()
+{
+    sendAccMessage("menu", "cancel");
+    sendAccMessage("menu", "display");
+    sendAccMessage("menu", "select", 0);
+    sendAccMessage("menu", "select", 1);
+    sendAccMessage("menu", "select", 3);
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 5);
+    sendAccMessage("menu", "select", 5);
+    sendAccMessage("menu", "select", 5);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "select", 6);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "select", 7);
+    sendAccMessage("menu", "cancel_submenu");
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "select", 8);
+    sendAccMessage("menu", "cancel");
+
+    //QThread::msleep(msecs);
+}
+
 void rqt_volturnus::volturnus_gui::on_video_overlay_topButton_released()
 {
     sendAccMessage("overlay", "top");
@@ -447,7 +505,9 @@ void rqt_volturnus::volturnus_gui::on_video_overlay_offButton_released()
     sendAccMessage("overlay", "off");
 }
 
+
 } //namespace
 
 PLUGINLIB_EXPORT_CLASS(rqt_volturnus::volturnus_gui, rqt_gui_cpp::Plugin)
+
 

@@ -781,7 +781,7 @@ QGroupBox::title {
        <x>10</x>
        <y>10</y>
        <width>281</width>
-       <height>211</height>
+       <height>261</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -807,7 +807,7 @@ QGroupBox::title {
        <widget class="QComboBox" name="video_menu_numberComboBox">
         <item>
          <property name="text">
-          <string>0</string>
+          <string>0 / -</string>
          </property>
         </item>
         <item>
@@ -867,7 +867,7 @@ QGroupBox::title {
       <item row="5" column="0" colspan="2">
        <widget class="QPushButton" name="video_menu_cancel_submenuButton">
         <property name="text">
-         <string>Cancel submenu</string>
+         <string>Cancel submenu / # (ENT)</string>
         </property>
        </widget>
       </item>
@@ -881,7 +881,7 @@ QGroupBox::title {
       <item row="3" column="0" colspan="2">
        <widget class="QPushButton" name="video_menu_displayButton">
         <property name="text">
-         <string>Display</string>
+         <string>Display / * (PRGM)</string>
         </property>
        </widget>
       </item>
@@ -889,6 +889,16 @@ QGroupBox::title {
        <widget class="QPushButton" name="video_menu_no_cmdButton">
         <property name="text">
          <string>No command</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" colspan="2">
+       <widget class="QPushButton" name="video_menu_volturnusButton">
+        <property name="text">
+         <string>(Volturnus Text Overlay)</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
