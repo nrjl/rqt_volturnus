@@ -64,9 +64,10 @@ private slots:
     void on_dvl_response_received();
     void on_firmware_response_received();
 
+    void on_video_menu_no_cmdButton_released();
     void on_video_menu_cancelButton_released();
     void on_video_menu_displayButton_released();
-    void on_video_menu_numberComboBox_currentIndexChanged(int index);
+    void on_video_menu_numberComboBox_activated(int index);
     void on_video_menu_cancel_submenuButton_released();
 
     void on_video_overlay_topButton_released();
@@ -75,6 +76,7 @@ private slots:
 
     void on_firmware_main_updateButton_released();
     void on_firmware_backplane_updateButton_released();
+
 
 signals:
     void sensorResponseReceived();

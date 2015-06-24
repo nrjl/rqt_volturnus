@@ -803,28 +803,7 @@ QGroupBox::title {
       <string>Menu</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_9">
-      <item row="0" column="0" colspan="2">
-       <widget class="QPushButton" name="video_menu_cancelButton">
-        <property name="text">
-         <string>Cancel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QPushButton" name="video_menu_displayButton">
-        <property name="text">
-         <string>Display</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Select:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
+      <item row="4" column="1">
        <widget class="QComboBox" name="video_menu_numberComboBox">
         <item>
          <property name="text">
@@ -838,50 +817,78 @@ QGroupBox::title {
         </item>
         <item>
          <property name="text">
-          <string>2</string>
+          <string>2 (ABC)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>3</string>
+          <string>3 (DEF)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>4</string>
+          <string>4 (GHI)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>5</string>
+          <string>5 (JKL)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>6</string>
+          <string>6 (MNO)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>7</string>
+          <string>7 (PQRS)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>8</string>
+          <string>8 (TUV)</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>9</string>
+          <string>9 (WXYZ)</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="3" column="0" colspan="2">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Select:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
        <widget class="QPushButton" name="video_menu_cancel_submenuButton">
         <property name="text">
          <string>Cancel submenu</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QPushButton" name="video_menu_cancelButton">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QPushButton" name="video_menu_displayButton">
+        <property name="text">
+         <string>Display</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="video_menu_no_cmdButton">
+        <property name="text">
+         <string>No command</string>
         </property>
        </widget>
       </item>

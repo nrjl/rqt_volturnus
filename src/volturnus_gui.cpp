@@ -74,9 +74,10 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.gripper_closeButton, SIGNAL(released()), this, SLOT(on_gripper_openButton_released()) );
 
     // video
+    connect(ui_.video_menu_no_cmdButton, SIGNAL(released()), this, SLOT(on_video_menu_no_cmdButton_released()) );
     connect(ui_.video_menu_cancelButton, SIGNAL(released()), this, SLOT(on_video_menu_cancelButton_released()) );
     connect(ui_.video_menu_displayButton, SIGNAL(released()), this, SLOT(on_video_menu_displayButton_released()) );
-    connect(ui_.video_menu_numberComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(on_video_menu_numberComboBox_currentIndexChanged(int)) );
+    connect(ui_.video_menu_numberComboBox, SIGNAL(activated(int)), this, SLOT(on_video_menu_numberComboBox_activated(int)) );
     connect(ui_.video_menu_cancel_submenuButton, SIGNAL(released()), this, SLOT(on_video_menu_cancel_submenuButton_released()) );
 
     connect(ui_.video_overlay_topButton, SIGNAL(released()), this, SLOT(on_video_overlay_topButton_released()) );
@@ -406,6 +407,11 @@ void rqt_volturnus::volturnus_gui::on_trim_checkBox_toggled(bool checked)
         sendAccMessage("status", "trim", 0);
 }
 
+void rqt_volturnus::volturnus_gui::on_video_menu_no_cmdButton_released()
+{
+    sendAccMessage("menu", "no_cmd");
+}
+
 void rqt_volturnus::volturnus_gui::on_video_menu_cancelButton_released()
 {
     sendAccMessage("menu", "cancel");
@@ -416,7 +422,7 @@ void rqt_volturnus::volturnus_gui::on_video_menu_displayButton_released()
     sendAccMessage("menu", "display");
 }
 
-void rqt_volturnus::volturnus_gui::on_video_menu_numberComboBox_currentIndexChanged(int index)
+void rqt_volturnus::volturnus_gui::on_video_menu_numberComboBox_activated(int index)
 {
     sendAccMessage("menu", "select", index);
 }
@@ -444,5 +450,4 @@ void rqt_volturnus::volturnus_gui::on_video_overlay_offButton_released()
 } //namespace
 
 PLUGINLIB_EXPORT_CLASS(rqt_volturnus::volturnus_gui, rqt_gui_cpp::Plugin)
-
 
