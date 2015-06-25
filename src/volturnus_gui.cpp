@@ -89,7 +89,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.video_menu_numberComboBox, SIGNAL(activated(int)), this, SLOT(on_video_menu_numberComboBox_activated(int)) );
     connect(ui_.video_menu_cancel_submenuButton, SIGNAL(released()), this, SLOT(on_video_menu_cancel_submenuButton_released()) );
     connect(ui_.video_menu_volturnusButton, SIGNAL(released()), this, SLOT(on_video_menu_volturnusButton_released()) );
-    connect(ui_.video_menu_dateButton, SIGNAL(released()), this, SLOT(on_vvideo_menu_dateButton_released()) );
+    connect(ui_.video_menu_dateButton, SIGNAL(released()), this, SLOT(on_video_menu_dateButton_released()) );
 
     connect(ui_.video_overlay_topButton, SIGNAL(released()), this, SLOT(on_video_overlay_topButton_released()) );
     connect(ui_.video_overlay_bottomButton, SIGNAL(released()), this, SLOT(on_video_overlay_bottomButton_released()) );
