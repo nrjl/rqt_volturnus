@@ -70,6 +70,7 @@ private slots:
     void on_video_menu_numberComboBox_activated(int index);
     void on_video_menu_cancel_submenuButton_released();
     void on_video_menu_volturnusButton_released();
+    void on_video_menu_dateButton_released();
 
     void on_video_overlay_topButton_released();
     void on_video_overlay_bottomButton_released();
@@ -77,8 +78,6 @@ private slots:
 
     void on_firmware_main_updateButton_released();
     void on_firmware_backplane_updateButton_released();
-
-
 
 signals:
     void sensorResponseReceived();

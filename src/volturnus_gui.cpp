@@ -3,6 +3,7 @@
 #include "VolturnusDefines.h"
 #include "std_msgs/UInt8.h"
 #include <QThread>
+#include <QDateTime>
 
 #include <pluginlib/class_list_macros.h>
 
@@ -15,7 +16,6 @@ public:
 };
 
 namespace rqt_volturnus {
-
 
 volturnus_gui::volturnus_gui()
     : rqt_gui_cpp::Plugin(),
@@ -89,6 +89,7 @@ void volturnus_gui::initPlugin(qt_gui_cpp::PluginContext& context)
     connect(ui_.video_menu_numberComboBox, SIGNAL(activated(int)), this, SLOT(on_video_menu_numberComboBox_activated(int)) );
     connect(ui_.video_menu_cancel_submenuButton, SIGNAL(released()), this, SLOT(on_video_menu_cancel_submenuButton_released()) );
     connect(ui_.video_menu_volturnusButton, SIGNAL(released()), this, SLOT(on_video_menu_volturnusButton_released()) );
+    connect(ui_.video_menu_dateButton, SIGNAL(released()), this, SLOT(on_vvideo_menu_dateButton_released()) );
 
     connect(ui_.video_overlay_topButton, SIGNAL(released()), this, SLOT(on_video_overlay_topButton_released()) );
     connect(ui_.video_overlay_bottomButton, SIGNAL(released()), this, SLOT(on_video_overlay_bottomButton_released()) );
@@ -503,6 +504,50 @@ void rqt_volturnus::volturnus_gui::on_video_menu_volturnusButton_released()
     //QThread::msleep(msecs);
 }
 
+
+void rqt_volturnus::volturnus_gui::on_video_menu_dateButton_released()
+{
+    sendAccMessage("menu", "cancel"); Sleeper::msleep(100);
+    sendAccMessage("menu", "display"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", 0); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", 1); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", 1); Sleeper::msleep(100);
+
+    QDateTime now = QDateTime::currentDateTime();
+    now.addMSecs(1600);
+    // Day
+    sendAccMessage("menu", "select", now.date().day()/10); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.date().day()%10); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+
+    // Month
+    sendAccMessage("menu", "select", now.date().month()/10); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.date().month()%10); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+
+    // Year
+    int yy = now.date().year()-2000;
+    sendAccMessage("menu", "select", yy/10); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", yy%10); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+
+    // Hours
+    sendAccMessage("menu", "select", now.time().hour()/10); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.time().hour()%10); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+
+    // Minutes
+    sendAccMessage("menu", "select", now.time().minute()/10); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.time().minute()%10); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+
+    // Seconds
+    sendAccMessage("menu", "select", now.time().second()/10); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.time().second()%10); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel");
+}
+
 void rqt_volturnus::volturnus_gui::on_video_overlay_topButton_released()
 {
     sendAccMessage("overlay", "top");
@@ -522,5 +567,4 @@ void rqt_volturnus::volturnus_gui::on_video_overlay_offButton_released()
 } //namespace
 
 PLUGINLIB_EXPORT_CLASS(rqt_volturnus::volturnus_gui, rqt_gui_cpp::Plugin)
-
 

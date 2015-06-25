@@ -781,7 +781,7 @@ QGroupBox::title {
        <x>10</x>
        <y>10</y>
        <width>281</width>
-       <height>261</height>
+       <height>241</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -892,10 +892,50 @@ QGroupBox::title {
         </property>
        </widget>
       </item>
-      <item row="6" column="0" colspan="2">
+     </layout>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>270</y>
+       <width>275</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}
+
+</string>
+     </property>
+     <property name="title">
+      <string>Automatic functions</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
        <widget class="QPushButton" name="video_menu_volturnusButton">
         <property name="text">
-         <string>(Volturnus Text Overlay)</string>
+         <string>(Volturnus Text)</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="video_menu_dateButton">
+        <property name="text">
+         <string>(Set date/time)</string>
         </property>
         <property name="checkable">
          <bool>false</bool>
