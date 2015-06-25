@@ -4,6 +4,7 @@
 #include "std_msgs/UInt8.h"
 #include <QThread>
 #include <QDateTime>
+#include <QTime>
 
 #include <pluginlib/class_list_macros.h>
 
@@ -14,6 +15,15 @@ public:
     static void msleep(unsigned long msecs){QThread::msleep(msecs);}
     static void sleep(unsigned long secs){QThread::sleep(secs);}
 };
+
+void delay( int millisecondsToWait )
+{
+    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
+    while( QTime::currentTime() < dieTime )
+    {
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
+    }
+}
 
 namespace rqt_volturnus {
 
@@ -285,35 +295,35 @@ void rqt_volturnus::volturnus_gui::on_lights_offButton_released()
 {
     sendAccMessage("lights", "off", LIGHT1_NUMBER);
     sendAccMessage("lights", "off", LIGHT2_NUMBER);
-    Sleeper::msleep(100);
+    delay(500);
     on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_left_brighterButton_released()
 {
     sendAccMessage("lights", "brighter", LIGHT1_NUMBER);
-    Sleeper::msleep(100);
+    delay(500);
     on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_right_brighterButton_released()
 {
     sendAccMessage("lights", "brighter", LIGHT2_NUMBER);
-    Sleeper::msleep(100);
+    delay(500);
     on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_left_dimmerButton_released()
 {
     sendAccMessage("lights", "dimmer", LIGHT1_NUMBER);
-    Sleeper::msleep(100);
+    delay(500);
     on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_right_dimmerButton_released()
 {
     sendAccMessage("lights", "dimmer", LIGHT2_NUMBER);
-    Sleeper::msleep(100);
+    delay(500);
     on_lights_updateButton_released();
 }
 
