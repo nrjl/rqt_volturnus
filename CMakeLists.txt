@@ -2,9 +2,17 @@ cmake_minimum_required(VERSION 2.8.3)
 project(rqt_volturnus)
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS roscpp rqt_gui rqt_gui_cpp std_msgs geometry_msgs)
+find_package(catkin REQUIRED COMPONENTS 
+    roscpp
+    rqt_gui
+    rqt_gui_cpp
+    std_msgs
+    geometry_msgs
+    volturnus_comms
+    message_generation)
 
 find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui)
+find_package(message_generation)
 
 include(${QT_USE_FILE})
 
@@ -28,7 +36,7 @@ set(rqt_volturnus_INCLUDE_DIRECTORIES
 catkin_package(
 	INCLUDE_DIRS ${rqt_volturnus_INCLUDE_DIRECTORIES}
 	LIBRARIES ${PROJECT_NAME} 
-        CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp std_msgs geometry_msgs
+    CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp std_msgs geometry_msgs volturnus_comms message_runtime
 )
 catkin_python_setup()
 
@@ -44,7 +52,7 @@ class_loader_hide_library_symbols(${PROJECT_NAME})
 
 #add_executable(volturnus_gui ${rqt_volturnus_SRCS})
 #target_link_libraries(volturnus_gui ${catkin_LIBRARIES})
-#add_dependencies(volturnus_gui ${catkin_EXPORTED_TARGETS})
+add_dependencies(rqt_volturnus volturnus_comms_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
 
 install(FILES plugin.xml
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}

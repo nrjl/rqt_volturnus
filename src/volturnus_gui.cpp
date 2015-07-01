@@ -1,6 +1,6 @@
 #include "volturnus_gui.h"
 #include "ui_volturnus_gui.h"
-#include "VolturnusDefines.h"
+#include "volturnus_comms/VolturnusDefines.h"
 #include "std_msgs/UInt8.h"
 #include <QThread>
 #include <QDateTime>
