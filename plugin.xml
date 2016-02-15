@@ -1,12 +1,22 @@
 <library path="lib/librqt_volturnus">
-  <class name="rqt_volturnus" type="rqt_volturnus::volturnus_gui" base_class_type="rqt_gui_cpp::Plugin">
+<!--  <class name="rqt_volturnus" type="rqt_volturnus::volturnus_gui" base_class_type="rqt_gui_cpp::Plugin">-->
+<!--    <description>-->
+<!--      A GUI plugin for operating and controlling the Volturnus AUV.-->
+<!--    </description>-->
+<!--    <qtgui>-->
+<!--      <label>Volturnus Interface</label>-->
+<!--      <icon type="theme">view-fullscreen</icon>-->
+<!--      <statustip>A GUI plugin to communicate with the Volturnus AUV.</statustip>-->
+<!--    </qtgui>-->
+<!--  </class>-->
+  <class name="rqt_volturnus" type="rqt_volturnus::lcm_gui" base_class_type="rqt_gui_cpp::Plugin">
     <description>
-      A GUI plugin for operating and controlling the Volturnus AUV.
+      A GUI plugin for showing data from the Greenseas nav system on the Volturnus AUV.
     </description>
     <qtgui>
-      <label>Volturnus Interface</label>
+      <label>Volturnus LCM Interface</label>
       <icon type="theme">view-fullscreen</icon>
-      <statustip>A GUI plugin to communicate with the Volturnus AUV.</statustip>
+      <statustip>A GUI plugin to communicate with the Greenseas nav on the Volturnus AUV.</statustip>
     </qtgui>
-  </class>
+  </class>  
 </library>

@@ -27,12 +27,14 @@
   <build_depend>std_msgs</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>volturnus_comms</build_depend>
+  <build_depend>lcm_to_ros</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>rqt_gui</run_depend>
   <run_depend>rqt_gui_cpp</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>geometry_msgs</run_depend>
   <run_depend>volturnus_comms</run_depend>
+  <run_depend>lcm_to_ros</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

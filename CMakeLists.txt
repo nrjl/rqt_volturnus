@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
     std_msgs
     geometry_msgs
     volturnus_comms
+    lcm_to_ros
     message_generation)
 
 find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui)
@@ -17,15 +18,18 @@ find_package(message_generation)
 include(${QT_USE_FILE})
 
 set(rqt_volturnus_SRCS
-  src/volturnus_gui.cpp
+  #src/volturnus_gui.cpp
+  src/lcm_gui.cpp
 )
 
 set(rqt_volturnus_HDRS
-  src/volturnus_gui.h
+  #src/volturnus_gui.h
+  src/lcm_gui.h
 )
 
 set(rqt_volturnus_UIS
-  src/volturnus_gui.ui
+  #src/volturnus_gui.ui
+  src/lcm_gui.ui
 )
 
 set(rqt_volturnus_INCLUDE_DIRECTORIES
@@ -36,7 +40,7 @@ set(rqt_volturnus_INCLUDE_DIRECTORIES
 catkin_package(
 	INCLUDE_DIRS ${rqt_volturnus_INCLUDE_DIRECTORIES}
 	LIBRARIES ${PROJECT_NAME} 
-    CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp std_msgs geometry_msgs volturnus_comms message_runtime
+    CATKIN_DEPENDS roscpp rqt_gui rqt_gui_cpp std_msgs geometry_msgs volturnus_comms lcm_to_ros message_runtime
 )
 catkin_python_setup()
 
@@ -52,7 +56,10 @@ class_loader_hide_library_symbols(${PROJECT_NAME})
 
 #add_executable(volturnus_gui ${rqt_volturnus_SRCS})
 #target_link_libraries(volturnus_gui ${catkin_LIBRARIES})
-add_dependencies(rqt_volturnus volturnus_comms_generate_messages_cpp ${catkin_EXPORTED_TARGETS})
+add_dependencies(rqt_volturnus 
+    volturnus_comms_generate_messages_cpp 
+    lcm_to_ros_generate_messages_cpp 
+    ${catkin_EXPORTED_TARGETS})
 
 install(FILES plugin.xml
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
