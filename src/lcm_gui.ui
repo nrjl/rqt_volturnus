@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>635</height>
+    <width>947</width>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>volturnus_gui</string>
   </property>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="navBox">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
      <width>571</width>
-     <height>611</height>
+     <height>531</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -39,10 +39,30 @@ QGroupBox::title {
     <string>Greenseas Nav</string>
    </property>
    <layout class="QGridLayout" name="gridLayout_8">
-    <item row="5" column="2">
-     <widget class="QLabel" name="altitude_OK">
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_89">
       <property name="text">
-       <string>Altitude OK</string>
+       <string>Pitch</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLCDNumber" name="depth_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLCDNumber" name="heading_rate_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
       </property>
      </widget>
     </item>
@@ -53,20 +73,91 @@ QGroupBox::title {
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLCDNumber" name="roll_LCD">
+    <item row="4" column="2">
+     <widget class="QLCDNumber" name="depth_rate_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_89">
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_107">
       <property name="text">
-       <string>Pitch</string>
+       <string>Altitude</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLCDNumber" name="altitude_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLabel" name="altitude_OK">
+      <property name="text">
+       <string>Altitude OK</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_109">
+      <property name="text">
+       <string>Latitude, Longitude</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLCDNumber" name="latitude_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLCDNumber" name="roll_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLCDNumber" name="roll_rate_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLCDNumber" name="pitch_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_126">
+      <property name="text">
+       <string>Rate (deg/s, m/s)</string>
       </property>
      </widget>
     </item>
@@ -77,12 +168,26 @@ QGroupBox::title {
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QLCDNumber" name="pitch_LCD">
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_136">
+      <property name="text">
+       <string>Relative Northing</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="label_111">
+      <property name="text">
+       <string>Value (deg, m)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLCDNumber" name="pitch_rate_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
@@ -98,116 +203,28 @@ QGroupBox::title {
      <widget class="QLCDNumber" name="heading_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
     </item>
-    <item row="9" column="1">
-     <widget class="QLCDNumber" name="speed_over_ground_LCD">
+    <item row="8" column="1">
+     <widget class="QLCDNumber" name="rel_north_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
     </item>
-    <item row="10" column="1">
-     <widget class="QLCDNumber" name="course_over_ground_LCD">
+    <item row="6" column="2">
+     <widget class="QLCDNumber" name="longitude_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLabel" name="label_126">
-      <property name="text">
-       <string>Rate (deg/s, m/s)</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="0">
-     <widget class="QLabel" name="label_97">
-      <property name="text">
-       <string>Speed over ground</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QLCDNumber" name="roll_rate_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="15" column="0">
-     <widget class="QLabel" name="attitude_OK">
-      <property name="text">
-       <string>Attitude OK</string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="0">
-     <widget class="QLabel" name="GPS_OK">
-      <property name="text">
-       <string>GPS OK</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QLCDNumber" name="pitch_rate_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QLCDNumber" name="heading_rate_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QLCDNumber" name="altitude_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLCDNumber" name="depth_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QLCDNumber" name="depth_rate_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
@@ -223,23 +240,46 @@ QGroupBox::title {
      <widget class="QLCDNumber" name="rel_east_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_107">
-      <property name="text">
-       <string>Altitude</string>
+    <item row="7" column="2">
+     <widget class="QLCDNumber" name="rel_east_rate_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label_111">
+    <item row="8" column="2">
+     <widget class="QLCDNumber" name="rel_north_rate_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="label_97">
       <property name="text">
-       <string>Value (deg, m)</string>
+       <string>Speed over ground</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLCDNumber" name="speed_over_ground_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
       </property>
      </widget>
     </item>
@@ -250,33 +290,20 @@ QGroupBox::title {
       </property>
      </widget>
     </item>
-    <item row="8" column="1">
-     <widget class="QLCDNumber" name="rel_north_LCD">
+    <item row="10" column="1">
+     <widget class="QLCDNumber" name="course_over_ground_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="2">
-     <widget class="QLCDNumber" name="rel_north_rate_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="2">
-     <widget class="QLCDNumber" name="rel_east_rate_LCD">
-      <property name="styleSheet">
-       <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
-}</string>
+    <item row="15" column="0">
+     <widget class="QLabel" name="attitude_OK">
+      <property name="text">
+       <string>Attitude OK</string>
       </property>
      </widget>
     </item>
@@ -294,17 +321,17 @@ QGroupBox::title {
       </property>
      </widget>
     </item>
+    <item row="16" column="0">
+     <widget class="QLabel" name="GPS_OK">
+      <property name="text">
+       <string>GPS OK</string>
+      </property>
+     </widget>
+    </item>
     <item row="16" column="1">
      <widget class="QLabel" name="DVL_OK">
       <property name="text">
        <string>DVL Bottom Lock OK</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0">
-     <widget class="QLabel" name="label_136">
-      <property name="text">
-       <string>Relative Northing</string>
       </property>
      </widget>
     </item>
@@ -315,30 +342,380 @@ QGroupBox::title {
       </property>
      </widget>
     </item>
-    <item row="6" column="0">
-     <widget class="QLabel" name="label_109">
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="pressureBox">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>10</y>
+     <width>331</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+   </property>
+   <property name="title">
+    <string>Pressure</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_91">
       <property name="text">
-       <string>Latitude, Longitude</string>
+       <string>Temperature (C)</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
-     <widget class="QLCDNumber" name="latitude_LCD">
+    <item row="0" column="1">
+     <widget class="QLCDNumber" name="temperature_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="2">
-     <widget class="QLCDNumber" name="longitude_LCD">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_92">
+      <property name="text">
+       <string>Pressure (psi)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLCDNumber" name="pressure_LCD">
       <property name="styleSheet">
        <string notr="true">QLCDNumber{
-    color: rgb(210, 210, 210);    
-    background-color: rgb(34, 56, 123);
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
 }</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="dvlBox">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>110</y>
+     <width>331</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+   </property>
+   <property name="title">
+    <string>DVL</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="DVL_tabs">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="btm">
+       <attribute name="title">
+        <string>Bottom</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_110">
+          <property name="text">
+           <string>Vel X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLCDNumber" name="dvl_btm_velx_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_137">
+          <property name="text">
+           <string>Altitude</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLCDNumber" name="dvl_btm_alt_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLCDNumber" name="dvl_btm_vely_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_139">
+          <property name="text">
+           <string>Vel Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="dvl_btm_lock">
+          <property name="text">
+           <string>LOCK</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLCDNumber" name="dvl_btm_velz_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_140">
+          <property name="text">
+           <string>Vel Z</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="ref">
+       <attribute name="title">
+        <string>Reference</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="1" column="1">
+         <widget class="QLCDNumber" name="dvl_ref_velx_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_145">
+          <property name="text">
+           <string>Vel Z</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_141">
+          <property name="text">
+           <string>Altitude</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="dvl_ref_lock">
+          <property name="text">
+           <string>LOCK</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_144">
+          <property name="text">
+           <string>Vel Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLCDNumber" name="dvl_ref_vely_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLCDNumber" name="dvl_ref_velz_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_142">
+          <property name="text">
+           <string>Vel X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLCDNumber" name="dvl_ref_alt_LCD">
+          <property name="styleSheet">
+           <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+       <zorder>label_141</zorder>
+       <zorder>dvl_ref_alt_LCD</zorder>
+       <zorder>label_142</zorder>
+       <zorder>dvl_ref_lock</zorder>
+       <zorder>label_144</zorder>
+       <zorder>label_145</zorder>
+       <zorder>dvl_ref_velz_LCD</zorder>
+       <zorder>dvl_ref_vely_LCD</zorder>
+       <zorder>dvl_ref_velx_LCD</zorder>
+       <zorder>dvl_btm_vely_LCD_2</zorder>
+       <zorder>dvl_btm_velz_LCD_2</zorder>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+   <zorder>pressureBox</zorder>
+   <zorder>DVL_tabs</zorder>
+  </widget>
+  <widget class="QGroupBox" name="compassBox">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>360</y>
+     <width>331</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 9px;
+    margin-top: 0.5em;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+   </property>
+   <property name="title">
+    <string>Compass</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="1" column="1">
+     <widget class="QLCDNumber" name="compass_roll_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLCDNumber" name="compass_pitch_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_146">
+      <property name="text">
+       <string>Pitch</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLCDNumber" name="compass_heading_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_147">
+      <property name="text">
+       <string>Heading</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLCDNumber" name="compass_distortion_LCD">
+      <property name="styleSheet">
+       <string notr="true">QLCDNumber{
+    color: rgb(255, 147, 0);    
+    background-color: rgb(51, 51, 51);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_138">
+      <property name="text">
+       <string>Roll</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="compass_att_status">
+      <property name="text">
+       <string>ATTITUDE VALID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_149">
+      <property name="text">
+       <string>Distortion</string>
       </property>
      </widget>
     </item>
