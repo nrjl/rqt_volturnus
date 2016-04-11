@@ -295,36 +295,36 @@ void rqt_volturnus::volturnus_gui::on_lights_offButton_released()
 {
     sendAccMessage("lights", "off", LIGHT1_NUMBER);
     sendAccMessage("lights", "off", LIGHT2_NUMBER);
-    delay(500);
-    on_lights_updateButton_released();
+    //delay(500);
+    //on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_left_brighterButton_released()
 {
     sendAccMessage("lights", "brighter", LIGHT1_NUMBER);
-    delay(500);
-    on_lights_updateButton_released();
+    //delay(500);
+    //on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_right_brighterButton_released()
 {
     sendAccMessage("lights", "brighter", LIGHT2_NUMBER);
-    delay(500);
-    on_lights_updateButton_released();
+    //delay(500);
+    //on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_left_dimmerButton_released()
 {
     sendAccMessage("lights", "dimmer", LIGHT1_NUMBER);
-    delay(500);
-    on_lights_updateButton_released();
+    //delay(500);
+    //on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_right_dimmerButton_released()
 {
     sendAccMessage("lights", "dimmer", LIGHT2_NUMBER);
-    delay(500);
-    on_lights_updateButton_released();
+    //delay(500);
+    //on_lights_updateButton_released();
 }
 
 void rqt_volturnus::volturnus_gui::on_tilt_upButton_pressed()
@@ -460,55 +460,55 @@ void rqt_volturnus::volturnus_gui::on_video_menu_cancel_submenuButton_released()
 
 void rqt_volturnus::volturnus_gui::on_video_menu_volturnusButton_released()
 {
-    sendAccMessage("menu", "cancel"); Sleeper::msleep(100);
-    sendAccMessage("menu", "display"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 0); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 1); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 3); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 5); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 5); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 5); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 6); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 7); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 8); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "display"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 0); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 1); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 3); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 5); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 5); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 5); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 6); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 7); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 8); Sleeper::msleep(MENU_SLEEP);
     sendAccMessage("menu", "cancel");
 
     //QThread::msleep(msecs);
@@ -517,44 +517,44 @@ void rqt_volturnus::volturnus_gui::on_video_menu_volturnusButton_released()
 
 void rqt_volturnus::volturnus_gui::on_video_menu_dateButton_released()
 {
-    sendAccMessage("menu", "cancel"); Sleeper::msleep(100);
-    sendAccMessage("menu", "display"); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 0); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 1); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", 1); Sleeper::msleep(100);
+    sendAccMessage("menu", "cancel"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "display"); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 0); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 1); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", 1); Sleeper::msleep(MENU_SLEEP);
 
     QDateTime now = QDateTime::currentDateTime();
     now.addMSecs(1600);
     // Day
-    sendAccMessage("menu", "select", now.date().day()/10); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", now.date().day()%10); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.date().day()/10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", now.date().day()%10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
 
     // Month
-    sendAccMessage("menu", "select", now.date().month()/10); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", now.date().month()%10); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.date().month()/10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", now.date().month()%10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
 
     // Year
     int yy = now.date().year()-2000;
-    sendAccMessage("menu", "select", yy/10); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", yy%10); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", yy/10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", yy%10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
 
     // Hours
-    sendAccMessage("menu", "select", now.time().hour()/10); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", now.time().hour()%10); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.time().hour()/10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", now.time().hour()%10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
 
     // Minutes
-    sendAccMessage("menu", "select", now.time().minute()/10); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", now.time().minute()%10); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.time().minute()/10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", now.time().minute()%10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
 
     // Seconds
-    sendAccMessage("menu", "select", now.time().second()/10); Sleeper::msleep(100);
-    sendAccMessage("menu", "select", now.time().second()%10); Sleeper::msleep(100);
-    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(100);
+    sendAccMessage("menu", "select", now.time().second()/10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "select", now.time().second()%10); Sleeper::msleep(MENU_SLEEP);
+    sendAccMessage("menu", "cancel_submenu"); Sleeper::msleep(MENU_SLEEP);
     sendAccMessage("menu", "cancel");
 }
 

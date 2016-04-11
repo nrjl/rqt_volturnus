@@ -13,6 +13,7 @@
 #include "geometry_msgs/Twist.h"
 //#include <ros/console.h>
 
+#define MENU_SLEEP 200
 
 namespace rqt_volturnus {
 
